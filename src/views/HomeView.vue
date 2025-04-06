@@ -1,9 +1,9 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <AppNavbar />
+    <HeroSection />
 </template>
+
+<script setup>
+import AppNavbar from '@/components/common/AppNavbar.vue';
+import HeroSection from '@/components/home/HeroSection.vue';
+</script>
