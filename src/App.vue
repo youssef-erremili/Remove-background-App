@@ -5,5 +5,6 @@ import HomeView from './views/HomeView.vue'
 
 <template>
   <HomeView />
+  <div class="h-80">.</div>
 
 </template>
