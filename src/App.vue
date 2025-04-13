@@ -1,9 +1,26 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HomeView from './views/HomeView.vue'
+import { RouterView } from 'vue-router';
+import { provide, ref } from 'vue';
+
+import AppAlert from './components/common/AppAlert.vue';
+
+const uploadedImage = ref(null);
+const alert = ref(false);
+const alertMsg = ref("");
+
+provide('triggerAlert', (msg) => {
+    alertMsg.value = msg;
+    alert.value = true;
+    setTimeout(() => {
+        alert.value = false;
+    }, 4000);
+});
+
+provide('uploadedImage', uploadedImage);
+
 </script>
 
 <template>
-    <HomeView />
-
+    <RouterView />
+    <AppAlert :showAlert="alert" :alertMsg="alertMsg" @close="alert = false" />
 </template>
