@@ -31,16 +31,16 @@
                 <p class="text-gray-600 mb-3">Try one of these:</p>
                 <div class="flex justify-center space-x-2">
                     <img @click="handleSampleImage('../../public/images/sample-4.jpg')"
-                        src="../../public/images/sample-4.jpg" alt="Cat example"
+                        src="/images/sample-4.jpg" alt="Cat example"
                         class="w-12 h-12 rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-blue-400">
                     <img @click="handleSampleImage('../../public/images/sample-21.jpg')"
-                        src="../../public/images/sample-21.jpg" alt="Bottle example"
+                        src="/images/sample-21.jpg" alt="Bottle example"
                         class="w-12 h-12 rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-blue-400">
                     <img @click="handleSampleImage('../../public/images/sample-26.jpg')"
-                        src="../../public/images/sample-26.jpg" alt="Car example"
+                        src="/images/sample-26.jpg" alt="Car example"
                         class="w-12 h-12 rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-blue-400">
                     <img @click="handleSampleImage('../../public/images/sample-13.jpg')"
-                        src="../../public/images/sample-13.jpg" alt="Person example"
+                        src="/images/sample-13.jpg" alt="Person example"
                         class="w-12 h-12 rounded-lg object-cover cursor-pointer hover:ring-2 hover:ring-blue-400">
                 </div>
             </div>
