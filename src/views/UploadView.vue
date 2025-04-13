@@ -10,7 +10,7 @@
                     <div class="relative p-3 overflow-hidden">
                         <button
                             class="cursor-pointer flex items-center justify-center gap-2 py-4 px-10 bg-[#4e7efe] hover:bg-[#376cff] text-white font-medium rounded-2xl shadow-md transition-all duration-200 transform hover:scale-[1.02]">
-                            <img src="../../../public/images/upload.png" alt="icon upload">
+                            <img src="/images/upload.png" alt="icon upload">
                             <span class="font-light">Upload Your Image</span>
                         </button>
                         <input @change="handleInputMeme"
