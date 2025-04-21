@@ -163,9 +163,7 @@ const showDimensions = computed(() => {
                                 </button>
                             </div>
                             <div>
-                                <!-- <a class="w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-medium inline-block text-center"
-                                    :href="removedImage" :download="removedImage">Download</a> -->
-                                <button @click="downloadImage" class="w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-medium inline-block text-center">
+                                <button @click="downloadImage" class="cursor-pointer w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-medium inline-block text-center">
                                     Download
                                 </button>
                                 <p v-if="showDimensions" class="text-center text-gray-500 text-sm py-1">1200px x 900px
