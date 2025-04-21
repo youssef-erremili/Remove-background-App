@@ -200,11 +200,13 @@
         </div>
     </div>
     <AppSteps />
+    <AppFaq />
 </template>
 
 <script setup>
 import { ref } from 'vue';
 import AppSteps from '../common/AppSteps.vue';
+import AppFaq from '../common/AppFaq.vue';
 
 const categories = ['People', 'Product', 'Cars', 'Animals', 'Graphics', 'Real Estate']
 const activeTab = ref('People');
