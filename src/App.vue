@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router';
-import { provide, ref } from 'vue';
+import { provide, ref, inject } from 'vue';
 
 import AppAlert from './components/common/AppAlert.vue';
 
