@@ -4,7 +4,7 @@ import AppLoader from '../common/AppLoader.vue';
 
 const scrollTarget = ref(null);
 const uploadedImage = inject('uploadedImage');
-const removedImage = ref(null); 
+const removedImage = ref(null);
 const tabs = ['Original', 'Removed'];
 const activeTab = ref('Original');
 const loader = ref(false);
@@ -38,7 +38,7 @@ const removeBackground = async () => {
     try {
         const base64Response = await fetch(uploadedImage.value);
         const blob = await base64Response.blob();
-        
+
         const formData = new FormData();
         formData.append('image_file', blob);
 
@@ -47,7 +47,7 @@ const removeBackground = async () => {
             headers: {
                 'x-api-key': apiKey.value,
             },
-            body: formData, 
+            body: formData,
         });
 
         if (!response.ok) {
@@ -57,7 +57,7 @@ const removeBackground = async () => {
 
         const resultBlob = await response.blob();
         removedImage.value = URL.createObjectURL(resultBlob);
-        
+
         // Switch to the "Removed" tab once processing is complete
         activeTab.value = tabs[1];
     } catch (error) {
@@ -66,6 +66,21 @@ const removeBackground = async () => {
         processing.value = false;
         loader.value = false;
     }
+}
+
+function downloadImage() {
+    fetch(removedImage.value)
+        .then(res => res.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'background_removed_erremili.png'; 
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url); 
+        });
 }
 
 // Replace computed with watch to properly trigger scrolling when uploadedImage changes
@@ -121,14 +136,16 @@ const showDimensions = computed(() => {
                             </div>
 
                             <!-- Removed background tab -->
-                            <div v-if="activeTab === tabs[1]" class="relative w-full h-[450px] flex flex-col items-center justify-center">
+                            <div v-if="activeTab === tabs[1]"
+                                class="relative w-full h-[450px] flex flex-col items-center justify-center">
                                 <!-- Show loader while processing -->
                                 <div v-if="processing" class="flex flex-col items-center justify-center">
                                     <AppLoader class="absolute" />
                                     <p class="text-gray-600 mt-2 text-center">Processing your image...</p>
                                 </div>
                                 <!-- Show the processed image once available -->
-                                <img v-else-if="removedImage" :src="removedImage" alt="Removed Background Image" class="w-full h-full object-contain" />
+                                <img v-else-if="removedImage" :src="removedImage" alt="Removed Background Image"
+                                    class="w-full h-full object-contain" />
                                 <!-- Show a message if no processed image is available -->
                                 <p v-else class="text-gray-600">Click "Remove Background" to process your image</p>
                             </div>
@@ -136,16 +153,23 @@ const showDimensions = computed(() => {
 
                         <div class="md:w-[460px] flex flex-col gap-4">
                             <div class="flex gap-4 mb-2">
-                                <button disabled class="flex-1 py-3 px-4 bg-blue-50 text-blue-600 rounded-lg font-medium">
+                                <button disabled
+                                    class="flex-1 py-3 px-4 bg-blue-50 text-blue-600 rounded-lg font-medium">
                                     Erase/Restore
                                 </button>
-                                <button disabled class="flex-1 py-3 px-4 bg-blue-50 text-blue-600 rounded-lg font-medium">
+                                <button disabled
+                                    class="flex-1 py-3 px-4 bg-blue-50 text-blue-600 rounded-lg font-medium">
                                     Editor tools
                                 </button>
                             </div>
                             <div>
-                                <a class="w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-medium inline-block text-center" :href="removedImage" :download="removedImage">Download</a>
-                                <p v-if="showDimensions" class="text-center text-gray-500 text-sm py-1">1200px x 900px</p>
+                                <!-- <a class="w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-medium inline-block text-center"
+                                    :href="removedImage" :download="removedImage">Download</a> -->
+                                <button @click="downloadImage" class="w-full py-3 px-4 bg-blue-500 text-white rounded-lg font-medium inline-block text-center">
+                                    Download
+                                </button>
+                                <p v-if="showDimensions" class="text-center text-gray-500 text-sm py-1">1200px x 900px
+                                </p>
                             </div>
                         </div>
                     </div>
