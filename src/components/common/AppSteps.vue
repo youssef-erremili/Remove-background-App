@@ -2,7 +2,6 @@
     <div class="bg-[#5c86fab6] py-20 px-4 my-12">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-4xl font-bold text-white text-center mb-16">How to remove the background of a picture.</h2>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Step 1 -->
                 <div class="bg-white rounded-xl p-8 shadow-lg">
