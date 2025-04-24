@@ -1,8 +1,6 @@
 <script setup>
-import { ref, inject, reactive } from 'vue';
+import { ref, reactive } from 'vue';
 
-
-// const tabs = ref(['Remove', 'Phone', 'Free', 'Color', 'Benefit', 'Importance']);
 const activeTab = ref('Remove')
 const frequentAskedQuestions = reactive([
     {
@@ -45,10 +43,10 @@ const changeTab = (tab) => {
 </script>
 
 <template>
-    <section class="py-24 mt-10">
+    <section class="py-12 md:py-16 lg:py-24 mt-6 md:mt-8 lg:mt-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <h1 class="text-5xl font-manrope text-center font-bold text-gray-900 leading-[3.25rem]">
+            <div class="mb-8 md:mb-12 lg:mb-16">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-manrope text-center font-bold text-gray-900 leading-tight md:leading-[3.25rem]">
                     You asked, we answered
                 </h1>
             </div>
@@ -56,8 +54,8 @@ const changeTab = (tab) => {
             <div v-for="(item, index) in frequentAskedQuestions" :key="index"
                 class="py-4 px-3 border-b border-solid border-gray-200 transition-all duration-500">
                 <button @click="changeTab(item.tab)" class="w-full flex items-center justify-between cursor-pointer">
-                    <h1 class="font-medium text-xl my-2 text-gray-700">{{ item.question }}</h1>
-                    <svg class="text-gray-500 transition-transform duration-300 ease-in-out"
+                    <h1 class="font-medium text-lg sm:text-xl my-2 text-gray-700">{{ item.question }}</h1>
+                    <svg class="text-gray-500 transition-transform duration-300 ease-in-out flex-shrink-0 ml-2"
                         :class="{ 'rotate-180': activeTab === item.tab }" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -65,7 +63,7 @@ const changeTab = (tab) => {
                     </svg>
                 </button>
                 <div class="overflow-hidden transition-all duration-500 ease-in-out" :class="{ 'max-h-0 opacity-0': activeTab !== item.tab, 'max-h-96 opacity-100': activeTab === item.tab }">
-                    <p class="text-base text-gray-600 mt-2 pb-2 leading-6">{{ item.answer }}</p>
+                    <p class="text-sm sm:text-base text-gray-600 mt-2 pb-2 leading-6">{{ item.answer }}</p>
                 </div>
             </div>
         </div>
